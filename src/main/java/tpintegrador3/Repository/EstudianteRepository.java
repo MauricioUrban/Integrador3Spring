@@ -4,14 +4,13 @@ package tpintegrador3.Repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import tpintegrador3.Entidades.Estudiante;
 
 import java.util.Collection;
 import java.util.List;
-
+@Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
-/*
- */
 
 //c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
 

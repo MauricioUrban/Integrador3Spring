@@ -4,9 +4,11 @@ package tpintegrador3.Entidades;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Entity
 @Data
-public class Estudiante_Carrera {
+public class Estudiante_Carrera implements Serializable {
     @Id
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumns({

@@ -19,25 +19,17 @@ public class CarreraService {
 
     @Transactional(readOnly = true)
     public List<CarreraResponseDTO> findAll() {
-
             return  this.carreraRepository.findAll().stream().map(CarreraResponseDTO::new).toList();
-
     }
 
     @Transactional(readOnly = true)
     public CarreraResponseDTO findById(Long id) {
-
             return this.carreraRepository.findById(id).map(CarreraResponseDTO::new).orElse(null);
-
-
-
     }
 
     @Transactional(readOnly = true)
     public List<CarreraResponseDTO> search(CarreraRequestDTO request) {
-
             return this.carreraRepository.search(request.getNombre()).stream().map(CarreraResponseDTO::new).toList();
-
     }
 
     @Transactional
@@ -51,8 +43,26 @@ public class CarreraService {
     //f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
     @Transactional(readOnly = true)
     public List<CarreraResponseDTO> carrerasWithEstudiantes() {
+            return this.carreraRepository.carrerasWithEstudiantes().stream().map(CarreraResponseDTO::new).toList();
+    }
 
-                return this.carreraRepository.carrerasWithEstudiantes().stream().map(CarreraResponseDTO::new).toList();
+    @Transactional
+    public CarreraResponseDTO update(Long id, CarreraRequestDTO request) {
+        Carrera carrera = carreraRepository.findById(id).orElse(null);
+        if (carrera == null) {
+             return null;
+        }
+        carrera.setNombre(request.getNombre());
+        carrera = carreraRepository.save(carrera);
+        return new CarreraResponseDTO(carrera);
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        Carrera carrera = carreraRepository.findById(id).orElse(null);
+        if (carrera != null) {
+           carreraRepository.delete(carrera);
+        }
     }
 
 

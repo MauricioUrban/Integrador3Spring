@@ -22,7 +22,6 @@ public class Carrera implements Serializable {
     private List<Estudiante_Carrera> estudianteCarrera;
 
     public Carrera() {
-
         super();
     }
 
@@ -31,4 +30,6 @@ public class Carrera implements Serializable {
         this.estudianteCarrera = new LinkedList<>();
     }
 
+    public void setNombre(String nombre) {
+    }
 }
