@@ -3,6 +3,7 @@ package tpintegrador3.Entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
+
 import tpintegrador3.Service.DTO.Carrera.Request.CarreraRequestDTO;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+
 @Data
 public class Carrera implements Serializable {
     @Id
