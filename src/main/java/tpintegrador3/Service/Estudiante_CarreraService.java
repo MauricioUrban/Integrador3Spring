@@ -11,7 +11,7 @@ import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
 import tpintegrador3.Service.DTO.Carrera.Response.CarreraResponseDTO;
-import tpintegrador3.Service.DTO.Estudiante.Response.EstudianteResponseDTO;
+import tpintegrador3.Service.DTO.Estudiante.Response.EstudianteDTO;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Request.Estudiante_CarreraRequestDTO;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Response.Estudiante_CarreraResponseDTO;
 import tpintegrador3.Service.DTO.Reporte.ReporteDTO;

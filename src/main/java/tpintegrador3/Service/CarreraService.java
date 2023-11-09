@@ -29,7 +29,7 @@ public class CarreraService {
 
     @Transactional(readOnly = true)
     public List<CarreraResponseDTO> search(CarreraRequestDTO request) {
-            return this.carreraRepository.search(request.getNombre()).stream().map(CarreraResponseDTO::new).toList();
+            return this.carreraRepository.search(request.getNombreCarrera()).stream().map(CarreraResponseDTO::new).toList();
     }
 
     @Transactional
@@ -52,7 +52,7 @@ public class CarreraService {
         if (carrera == null) {
              return null;
         }
-        carrera.setNombre(request.getNombre());
+        carrera.setNombre(request.getNombreCarrera());
         carrera = carreraRepository.save(carrera);
         return new CarreraResponseDTO(carrera);
     }

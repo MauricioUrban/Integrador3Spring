@@ -26,10 +26,11 @@ public class Carrera implements Serializable {
     }
 
     public Carrera(CarreraRequestDTO request) {
-        this.nombreCarrera = request.getNombre();
+        this.nombreCarrera = request.getNombreCarrera();
         this.estudianteCarrera = new LinkedList<>();
     }
 
     public void setNombre(String nombre) {
+        this.nombreCarrera = nombre;
     }
 }

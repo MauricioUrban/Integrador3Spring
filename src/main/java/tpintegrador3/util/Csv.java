@@ -46,8 +46,7 @@ public class Csv {
 
             for (CSVRecord csvRecord : csvParser) {
                 Estudiante estudiante = new Estudiante();
-
-                estudiante.setIdEstudiante(Long.parseLong(csvRecord.get("nroDocumento")));
+                estudiante.setNroDocumento(Integer.parseInt(csvRecord.get("nroDocumento")));
                 estudiante.setNombre(csvRecord.get("nombre"));
                 estudiante.setApellido(csvRecord.get("apellido"));
                 estudiante.setEdad(Integer.parseInt(csvRecord.get("edad")));

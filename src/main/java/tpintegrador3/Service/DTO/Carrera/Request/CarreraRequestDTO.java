@@ -10,6 +10,6 @@ import lombok.Data;
 public class CarreraRequestDTO {
     @NotNull( message = "El nombre es un campo obligatorio.")
     @NotEmpty( message = "El nombre es un campo obligatorio.")
-    private String nombre;
+    private String nombreCarrera;
     private Long cantEstudiante;
 }
