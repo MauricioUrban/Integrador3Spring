@@ -3,6 +3,8 @@ package tpintegrador3.Entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -10,14 +12,15 @@ import java.io.Serializable;
 @Data
 public class Estudiante_Carrera implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumns({
-            @JoinColumn(name = "idEstudiante", referencedColumnName = "idEstudiante"),
-    })
+    @JoinColumn(name = "idEstudiante", referencedColumnName = "idEstudiante")
     private Estudiante estudiante;
 
 
-    @Id
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idCarrera", referencedColumnName = "idCarrera")
     private Carrera carrera;

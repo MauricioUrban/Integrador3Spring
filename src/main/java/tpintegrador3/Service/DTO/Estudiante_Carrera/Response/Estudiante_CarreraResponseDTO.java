@@ -9,10 +9,11 @@ import tpintegrador3.Entidades.Estudiante_Carrera;
 @RequiredArgsConstructor
 public class Estudiante_CarreraResponseDTO {
 
-        private final String nombreCarrera;
-        private final int year;
-        private final int inscriptos;
-        private final long egresados;
+        private String nombreCarrera;
+        private int year;
+        private int inscriptos;
+        private Long egresados;
+
 
         public Estudiante_CarreraResponseDTO( Estudiante_Carrera ec ) {
             this.nombreCarrera = ec.getCarrera().getNombreCarrera();

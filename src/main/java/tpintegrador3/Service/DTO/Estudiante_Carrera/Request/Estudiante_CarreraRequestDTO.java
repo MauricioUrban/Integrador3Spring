@@ -6,18 +6,22 @@ import lombok.Data;
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class Estudiante_CarreraRequestDTO {
 
-        private String nombreCarrera;
+        private Long idEstudiante;
+        private Long idCarrera;
         private int year;
-        private long inscriptos;
-        private long egresados;
+        private boolean graduado;
+
+        public Estudiante_CarreraRequestDTO(Long idEstudiante, Long idCarrera, int year, boolean graduado){
+
+                this.idEstudiante= idEstudiante;
+                this.idCarrera = idCarrera;
+                this.year= year;
+                this.graduado = graduado;
+
+
+        }
 
         public Estudiante_CarreraRequestDTO() {
         }
 
-        public Estudiante_CarreraRequestDTO(String nombreCarrera, int year, long inscriptos, long egresados) {
-                this.nombreCarrera = nombreCarrera;
-                this.year = year;
-                this.inscriptos = inscriptos;
-                this.egresados = egresados;
-        }
 }

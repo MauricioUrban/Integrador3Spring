@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import tpintegrador3.Entidades.Carrera;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface CarreraRepository  extends JpaRepository<Carrera, Long> {
 
@@ -24,5 +26,10 @@ public interface CarreraRepository  extends JpaRepository<Carrera, Long> {
     List<Carrera> carrerasWithEstudiantes();
 
 
+
+    @Query( "SELECT c " +
+            "FROM Carrera c " +
+            "WHERE c.nombreCarrera = :nombreCarrera ")
+    Carrera findByNombreCarrera(String nombreCarrera);
 }
 
