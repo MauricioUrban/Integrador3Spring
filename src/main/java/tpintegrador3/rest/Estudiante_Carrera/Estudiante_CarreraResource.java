@@ -44,8 +44,5 @@ public class Estudiante_CarreraResource {
         return ResponseEntity.accepted().body((Estudiante_CarreraResponseDTO) result);
     }
 
-    @GetMapping("/lucky")
-    public Estudiante_CarreraResponseDTO luckyStudent_Carrera(){
-        return this.estudiante_carreraService.luckyStudent_Carrera();
-    }
+
 }
