@@ -36,6 +36,7 @@ public class CarreraService {
     public CarreraResponseDTO save(CarreraRequestDTO request) {
             final var carrera = new Carrera(request);
             final var result = this.carreraRepository.save(carrera);
+            System.out.println(result);
             return new CarreraResponseDTO(result);
     }
 
