@@ -49,10 +49,14 @@ public class EstudianteService {
 
     }
 
+
+
+    @Transactional
     public Estudiante save(Estudiante estudiante) {
         estudianteRepository.save(estudiante);
         return estudiante;
     }
+
 
 
     @Transactional(readOnly = true)

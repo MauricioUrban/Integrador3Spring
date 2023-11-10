@@ -11,8 +11,6 @@ import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
-
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -26,6 +24,7 @@ public class Csv {
     private final EstudianteRepository er;
     private final CarreraRepository cr;
     private final Estudiante_CarreraRepository ecr;
+
 
     public Csv(EstudianteRepository er, CarreraRepository cr, Estudiante_CarreraRepository ecr) {
         this.er = er;
@@ -54,6 +53,7 @@ public class Csv {
         csvFilePath = path + "/" + csvCarrera;
         parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
 
+
         for (CSVRecord row : parser) {
             Carrera carrera = new Carrera(Integer.parseInt(row.get("idCarrera")), row.get("nombreCarrera"));
             cr.save(carrera);
@@ -63,12 +63,20 @@ public class Csv {
         parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
 
         for (CSVRecord row : parser) {
+
+
+
             Estudiante e = this.er.findById(Long.parseLong(row.get("idEstudiante"))).get();
-                Carrera c = this.cr.findById(Long.parseLong(row.get("idCarrera"))).get();
-                Estudiante_Carrera ec = new Estudiante_Carrera
-                                (e, c, Integer.parseInt(row.get("antiguedad")),
-                                Boolean.parseBoolean(row.get("graduado")));
-                ecr.save(ec); //guarda a la matriculacion en la base de datos
+            Carrera c = this.cr.findById(Long.parseLong(row.get("idCarrera"))).get();
+            Estudiante_Carrera ec = new Estudiante_Carrera
+                    (e, c, Integer.parseInt(row.get("antiguedad")),
+                            Boolean.parseBoolean(row.get("graduado")));
+            ecr.save(ec); //guarda a la matriculacion en la base de datos
+
+
+
+           
+
         }
     }
 }

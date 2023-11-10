@@ -24,7 +24,7 @@ public class EstudianteController {
         return estudianteService.findAll();
     }
 
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     public Optional<Estudiante> findById(String id) {
         Long _id = Long.valueOf(id);
         Optional<Estudiante> estudiante = estudianteService.findById(_id);
