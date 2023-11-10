@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.ConfigurableApplicationContext;
 import tpintegrador3.util.Csv;
 
 import java.io.IOException;
@@ -24,11 +25,12 @@ public class TpIntegrador3Application {
     private Csv csv;
 
     public static void main(String[] args) {
-          SpringApplication.run(TpIntegrador3Application.class, args);
+        SpringApplication.run(TpIntegrador3Application.class, args);
 
     }
+
     @PostConstruct
-    public void init() throws IOException, Exception {
-        csv.csv();
+    public void init() throws Exception{
+        csv.InsertarCSV("estudiantes.csv", "carreras.csv", "estudianteCarrera.csv");
     }
 }

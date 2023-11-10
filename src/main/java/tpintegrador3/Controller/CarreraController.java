@@ -1,6 +1,7 @@
 package tpintegrador3.Controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Service.CarreraService;
@@ -10,6 +11,8 @@ import java.util.List;
 @RestController("CarreraController")
 @RequestMapping("/carrera")
 public class CarreraController {
+
+    @Autowired
     private CarreraService carreraService;
 
     // Crea una nueva carrera
@@ -49,10 +52,10 @@ public class CarreraController {
     }
 
     // Devuelve las carreras que tienen estudiantes inscriptos
-    @GetMapping("/carrerasWithEstudiantes")
-    public List<CarreraDTO> carrerasWithEstudiantes() {
-        return carreraService.carrerasWithEstudiantes();
-    }
+//    @GetMapping("/carrerasWithEstudiantes")
+//    public List<CarreraDTO> carrerasWithEstudiantes() {
+//        return carreraService.carrerasWithEstudiantes();
+//    }
 
     // Recibe un objeto CarreraRequestDTO, que contiene un criterio de búsqueda.
     @GetMapping("/search")

@@ -1,18 +1,15 @@
 package tpintegrador3.Controller;
 
 
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 import tpintegrador3.Service.EstudianteService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/estudiante")
@@ -23,21 +20,21 @@ public class EstudianteController {
 
 
     @RequestMapping("/findAll")
-    public List<EstudianteDTO> findAll() {
-        List<EstudianteDTO> estudiantes = estudianteService.findAll();
+    public List<Estudiante> findAll() {
+        List<Estudiante> estudiantes = estudianteService.findAllEstudiantes();
         return estudiantes;
     }
 
     @RequestMapping("/findById/{id}")
-    public EstudianteDTO findById(String id) {
+    public Optional<Estudiante> findById(String id) {
         Long _id = Long.valueOf(id);
-        EstudianteDTO estudiante = estudianteService.findById(_id);
+        Optional<Estudiante> estudiante = estudianteService.findById(_id);
         return estudiante;
     }
 
     @PostMapping("/save")
-    public ResponseEntity<EstudianteDTO> save(@RequestBody Estudiante request) {
-        EstudianteDTO estudiante = estudianteService.save(request);
+    public ResponseEntity<Estudiante> save(@RequestBody Estudiante request) {
+        Estudiante estudiante = estudianteService.save(request);
         return ResponseEntity.accepted().body(estudiante);
     }
 
@@ -63,11 +60,21 @@ public class EstudianteController {
         return estudiantes;
     }
 
-    @RequestMapping("/findByNroLibreta/{nroLibreta}")
-    public EstudianteDTO findByNroLibreta(String nroLibreta) {
-        int _nroLibreta = Integer.valueOf(nroLibreta);
-        EstudianteDTO estudiante = estudianteService.findByNroLibreta(_nroLibreta);
-        return estudiante;
+//    @RequestMapping("/findByNroLibreta/{nroLibreta}")
+//    public EstudianteDTO findByNroLibreta(String nroLibreta) {
+//        int _nroLibreta = Integer.valueOf(nroLibreta);
+//        EstudianteDTO estudiante = estudianteService.findByNroLibreta(_nroLibreta);
+//        return estudiante;
+//    }
+
+    @RequestMapping(value="/getByLibreta/{libreta}", method=RequestMethod.GET)
+    public EstudianteDTO getByGenero(@PathVariable int libreta){
+        return estudianteService.findByNroLibreta(libreta);
+    }
+
+    @RequestMapping(value="/genre/{genero}", method=RequestMethod.GET)
+    public List<EstudianteDTO> getByGenero(@PathVariable String genero){
+        return estudianteService.findByGenero(genero);
     }
 
     @RequestMapping("/findEstudiantesByCarreraAndCiudad/{nombreCarrera}/{ciudadResidencia}")

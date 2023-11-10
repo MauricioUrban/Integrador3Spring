@@ -3,6 +3,8 @@ package tpintegrador3.Entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -47,6 +49,6 @@ public class Estudiante implements Serializable {
 
     }
 
-    public Estudiante(EstudianteRequestDTO request) {
+    public Estudiante(EstudianteDTO request) {
     }
 }

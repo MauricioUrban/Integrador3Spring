@@ -65,17 +65,17 @@ public class CarreraService {
             return new CarreraDTO(result.getNombreCarrera());
     }
 
-    @Transactional(readOnly = true)
-    public List<CarreraDTO> carrerasWithEstudiantes() {
-        List<Carrera> resultado = this.carreraRepository.carrerasWithEstudiantes();
-
-        List<CarreraDTO> listaNueva = resultado.stream()
-                .map(CarreraService::apply)
-                .sorted(Comparator.comparingLong(CarreraDTO::getCantEstudiante).reversed())
-                .toList();
-
-        return listaNueva;
-    }
+//    @Transactional(readOnly = true)
+//    public List<CarreraDTO> carrerasWithEstudiantes() {
+//        List<Carrera> resultado = this.carreraRepository.carrerasWithEstudiantes();
+//
+//        List<CarreraDTO> listaNueva = resultado.stream()
+//                .map(CarreraService::apply)
+//                .sorted(Comparator.comparingLong(CarreraDTO::getCantEstudiante).reversed())
+//                .toList();
+//
+//        return listaNueva;
+//    }
 
 
     @Transactional
