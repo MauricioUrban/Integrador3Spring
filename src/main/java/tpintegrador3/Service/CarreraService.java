@@ -1,15 +1,12 @@
 package tpintegrador3.Service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 @Service("CarreraService")
@@ -64,18 +61,6 @@ public class CarreraService {
             Carrera result = this.carreraRepository.save(carrera);
             return new CarreraDTO(result.getNombreCarrera());
     }
-
-//    @Transactional(readOnly = true)
-//    public List<CarreraDTO> carrerasWithEstudiantes() {
-//        List<Carrera> resultado = this.carreraRepository.carrerasWithEstudiantes();
-//
-//        List<CarreraDTO> listaNueva = resultado.stream()
-//                .map(CarreraService::apply)
-//                .sorted(Comparator.comparingLong(CarreraDTO::getCantEstudiante).reversed())
-//                .toList();
-//
-//        return listaNueva;
-//    }
 
 
     @Transactional

@@ -21,8 +21,7 @@ public class EstudianteController {
 
     @RequestMapping("/findAll")
     public List<Estudiante> findAll() {
-        List<Estudiante> estudiantes = estudianteService.findAllEstudiantes();
-        return estudiantes;
+        return estudianteService.findAll();
     }
 
     @RequestMapping("/findById/{id}")
