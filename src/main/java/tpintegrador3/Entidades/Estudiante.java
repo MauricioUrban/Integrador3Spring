@@ -4,6 +4,7 @@ package tpintegrador3.Entidades;
 import jakarta.persistence.*;
 import lombok.Getter;
 import java.util.LinkedList;
+
 import java.util.List;
 
 @Entity

@@ -9,7 +9,7 @@ import tpintegrador3.Entidades.Carrera;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Repository("CarreraRepository")
 public interface CarreraRepository  extends JpaRepository<Carrera, Long> {
 
     @Query( "SELECT c " +
