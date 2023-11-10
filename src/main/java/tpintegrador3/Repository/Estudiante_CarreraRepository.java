@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public interface Estudiante_CarreraRepository extends JpaRepository<Estudiante_Carrera, Long> {
 
+    List<Estudiante_Carrera> findAll();
 
     @Query("SELECT c.nombreCarrera, ec.antiguedad, " +
             "COUNT(ec), " +
@@ -19,5 +20,5 @@ public interface Estudiante_CarreraRepository extends JpaRepository<Estudiante_C
             "WHERE ec.antiguedad BETWEEN 1990 AND :currentYear " +
             "GROUP BY c.nombreCarrera, ec.antiguedad " +
             "ORDER BY c.nombreCarrera ASC, ec.antiguedad ASC")
-    List<Estudiante_Carrera> getReporte();
+    List<Object[]> getReporte();
 }

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
+import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
-import tpintegrador3.Service.DTO.Estudiante_Carrera.Request.Estudiante_CarreraRequestDTO;
 import tpintegrador3.Service.Estudiante_CarreraService;
 
 import java.io.File;
@@ -46,8 +46,7 @@ public class Csv {
 
             for (CSVRecord csvRecord : csvParser) {
                 Estudiante estudiante = new Estudiante();
-
-                estudiante.setIdEstudiante(Long.parseLong(csvRecord.get("nroDocumento")));
+                estudiante.setNroDocumento(Integer.parseInt(csvRecord.get("nroDocumento")));
                 estudiante.setNombre(csvRecord.get("nombre"));
                 estudiante.setApellido(csvRecord.get("apellido"));
                 estudiante.setEdad(Integer.parseInt(csvRecord.get("edad")));
@@ -86,12 +85,7 @@ public class Csv {
             for (CSVRecord csvRecord : csvParser) {
                 Estudiante e = this.estudianteRepository.findById(Long.parseLong(csvRecord.get("idEstudiante"))).get();
                 Carrera c = this.carreraRepository.findById(Long.parseLong(csvRecord.get("idCarrera"))).get();
-                Estudiante_CarreraRequestDTO estudiante_carrera = new Estudiante_CarreraRequestDTO
-                                    (e.getIdEstudiante(),
-                                    c.getIdCarrera(), Integer.parseInt(csvRecord.get("antiguedad")),
-                                    Boolean.parseBoolean(csvRecord.get("graduado")));
-
-
+                Estudiante_Carrera estudiante_carrera = new Estudiante_Carrera(e, c, Integer.parseInt(csvRecord.get("antiguedad")), Boolean.parseBoolean(csvRecord.get("graduado")));
 
                 this.estudiante_carreraService.save(estudiante_carrera); //guarda a la matriculacion en la base de datos
             }
