@@ -9,7 +9,6 @@ import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Estudiante_CarreraDTO;
-
 import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
 
 import java.util.ArrayList;

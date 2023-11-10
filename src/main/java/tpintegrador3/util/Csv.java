@@ -4,7 +4,6 @@ package tpintegrador3.util;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
@@ -12,6 +11,10 @@ import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12c99b74355ce686e86a296a3ae0801a27507776
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -65,21 +68,31 @@ public class Csv {
                     Integer.parseInt(row.get("nroLibreta")));
             er.save(estudiante);
         }
+<<<<<<< HEAD
 
 //        csvFilePath = System.getProperty("user.dir") + "/" + csvCarrera;
         csvFilePath = path + "/" + csvCarrera;
         parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
 
+=======
+        csvFilePath = path + "/" + csvCarrera;
+        parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
+
+>>>>>>> 12c99b74355ce686e86a296a3ae0801a27507776
         for (CSVRecord row : parser) {
             Carrera carrera = new Carrera(Integer.parseInt(row.get("idCarrera")), row.get("nombreCarrera"));
             cr.save(carrera);
         }
+<<<<<<< HEAD
 
 //        csvFilePath = System.getProperty("user.dir") + "/" + csvEstudianteCarrera;
+=======
+>>>>>>> 12c99b74355ce686e86a296a3ae0801a27507776
         csvFilePath = path + "/" + csvEstudianteCarrera;
         parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
 
         for (CSVRecord row : parser) {
+<<<<<<< HEAD
 //            Estudiante_Carrera ic = new Estudiante_Carrera(Integer.parseInt(row.get("dni")), Integer.parseInt(row.get("libretaUniversitaria")), Integer.parseInt(row.get("carrera")), Integer.parseInt(row.get("antiguedad")), row.get("graduado").equals("true"), Integer.parseInt(row.get("anioIngreso")));
 //            ecr.save(ic);
 
@@ -89,11 +102,20 @@ public class Csv {
                     (e, c, Integer.parseInt(row.get("antiguedad")),
                             Boolean.parseBoolean(row.get("graduado")));
             ecr.save(ec); //guarda a la matriculacion en la base de datos
+=======
+            Estudiante e = this.er.findById(Long.parseLong(row.get("idEstudiante"))).get();
+                Carrera c = this.cr.findById(Long.parseLong(row.get("idCarrera"))).get();
+                Estudiante_Carrera ec = new Estudiante_Carrera
+                                    (e, c, Integer.parseInt(row.get("antiguedad")),
+                                    Boolean.parseBoolean(row.get("graduado")));
+                ecr.save(ec); //guarda a la matriculacion en la base de datos
+>>>>>>> 12c99b74355ce686e86a296a3ae0801a27507776
 
         }
     }
 }
 
+<<<<<<< HEAD
 //
 //    public void csv() throws IOException, Exception {
 //        cargarDatosEstudiante();
@@ -162,3 +184,6 @@ public class Csv {
 //        }
 //    }
 //}
+=======
+
+>>>>>>> 12c99b74355ce686e86a296a3ae0801a27507776

@@ -39,7 +39,10 @@ public class Carrera implements Serializable {
         this.estudianteCarrera = new LinkedList<>();
     }
 
-   public void setNombre(String nombre) {
+    public Carrera(int id, String nombre) {
+    }
+
+    public void setNombre(String nombre) {
         this.nombreCarrera = nombre;
     }
 }
