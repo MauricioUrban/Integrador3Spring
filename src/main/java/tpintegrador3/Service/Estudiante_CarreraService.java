@@ -1,23 +1,16 @@
 package tpintegrador3.Service;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
-import tpintegrador3.Service.DTO.Carrera.Response.CarreraResponseDTO;
-import tpintegrador3.Service.DTO.Estudiante.Response.EstudianteDTO;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Request.Estudiante_CarreraRequestDTO;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Response.Estudiante_CarreraResponseDTO;
-import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
-
 import java.util.List;
-import java.util.Optional;
 
 
 @Service("Estudiante_CarreraService")

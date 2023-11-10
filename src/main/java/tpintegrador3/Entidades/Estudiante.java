@@ -3,8 +3,6 @@ package tpintegrador3.Entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import tpintegrador3.Service.DTO.Estudiante.Request.EstudianteRequestDTO;
-
 import java.io.Serializable;
 import java.util.List;
 

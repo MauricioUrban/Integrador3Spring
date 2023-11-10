@@ -6,56 +6,89 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Repository.CarreraRepository;
-import tpintegrador3.Service.DTO.Carrera.Request.CarreraRequestDTO;
-import tpintegrador3.Service.DTO.Carrera.Response.CarreraResponseDTO;
+import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
-@Service
+@Service("CarreraService")
 public class CarreraService {
-    //repository
+
     @Autowired
     private CarreraRepository carreraRepository;
 
     @Transactional(readOnly = true)
-    public List<CarreraResponseDTO> findAll() {
-            return  this.carreraRepository.findAll().stream().map(CarreraResponseDTO::new).toList();
+    public List<CarreraDTO> findAll() {
+        List<Carrera> resultado = this.carreraRepository.findAll();
+        List<CarreraDTO> listaNueva = new ArrayList<>();
+
+        for (Carrera carrera : resultado) {
+            CarreraDTO carreraDTO = new CarreraDTO(
+                    carrera.getNombreCarrera()
+            );
+            listaNueva.add(carreraDTO);
+        }
+
+        return listaNueva;
     }
 
     @Transactional(readOnly = true)
-    public CarreraResponseDTO findById(Long id) {
-            return this.carreraRepository.findById(id).map(CarreraResponseDTO::new).orElse(null);
+    public CarreraDTO findById(Long id) {
+        return this.carreraRepository.findById(id)
+                .map(carrera -> new CarreraDTO(
+                        carrera.getNombreCarrera()
+                ))
+                .orElse(null);
     }
 
     @Transactional(readOnly = true)
-    public List<CarreraResponseDTO> search(CarreraRequestDTO request) {
-            return this.carreraRepository.search(request.getNombreCarrera()).stream().map(CarreraResponseDTO::new).toList();
+    public List<CarreraDTO> search(CarreraDTO request) {
+        List<Carrera> resultado = this.carreraRepository.search(request.getNombreCarrera());
+        List<CarreraDTO> listaNueva = new ArrayList<>();
+
+        for (Carrera carrera : resultado) {
+            CarreraDTO carreraDTO = new CarreraDTO(
+                 carrera.getNombreCarrera()
+            );
+
+            listaNueva.add(carreraDTO);
+        }
+
+        return listaNueva;
     }
+
 
     @Transactional
-    public CarreraResponseDTO save(CarreraRequestDTO request) {
-            final var carrera = new Carrera(request);
-            final var result = this.carreraRepository.save(carrera);
-            return new CarreraResponseDTO(result);
+    public CarreraDTO save(Carrera carrera) {
+            Carrera result = this.carreraRepository.save(carrera);
+            return new CarreraDTO(result.getNombreCarrera());
     }
 
-
-    //f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
     @Transactional(readOnly = true)
-    public List<CarreraResponseDTO> carrerasWithEstudiantes() {
-            return this.carreraRepository.carrerasWithEstudiantes().stream().map(CarreraResponseDTO::new).toList();
+    public List<CarreraDTO> carrerasWithEstudiantes() {
+        List<Carrera> resultado = this.carreraRepository.carrerasWithEstudiantes();
+
+        List<CarreraDTO> listaNueva = resultado.stream()
+                .map(CarreraService::apply)
+                .sorted(Comparator.comparingLong(CarreraDTO::getCantEstudiante).reversed())
+                .toList();
+
+        return listaNueva;
     }
+
 
     @Transactional
-    public CarreraResponseDTO update(Long id, CarreraRequestDTO request) {
+    public CarreraDTO update(Long id, CarreraDTO request) {
         Carrera carrera = carreraRepository.findById(id).orElse(null);
         if (carrera == null) {
-             return null;
+            return null;
         }
         carrera.setNombre(request.getNombreCarrera());
         carrera = carreraRepository.save(carrera);
-        return new CarreraResponseDTO(carrera);
+        return new CarreraDTO(carrera.getNombreCarrera());
     }
+
 
     @Transactional
     public void delete(Long id) {
