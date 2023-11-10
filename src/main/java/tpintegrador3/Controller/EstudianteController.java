@@ -19,7 +19,7 @@ public class EstudianteController {
     private EstudianteService estudianteService;
 
 
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public List<Estudiante> findAll() {
         return estudianteService.findAll();
     }

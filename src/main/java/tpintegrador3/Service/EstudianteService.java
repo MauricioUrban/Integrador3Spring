@@ -4,9 +4,13 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Repository.EstudianteRepository;
+import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,9 +20,25 @@ public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
+    @Transactional(readOnly = true)
     public List<Estudiante> findAll() {
         return estudianteRepository.findAll();
     }
+
+
+//    public List<EstudianteDTO> findAll() {
+//        List<Estudiante> resultado = this.estudianteRepository.findAll();
+//        List<EstudianteDTO> listaNueva = new ArrayList<>();
+//
+//        for (Estudiante estudiante : resultado) {
+//            CarreraDTO carreraDTO = new CarreraDTO(
+//                    estudiante.getNombre()
+//            );
+//            listaNueva.add(EstudianteDTO);
+//        }
+//
+//        return listaNueva;
+//    }
 
 
     @Transactional(readOnly = true)
