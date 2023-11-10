@@ -8,59 +8,53 @@ import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
-    @Transactional(readOnly = true)
-    public List<EstudianteDTO> findAllByOrderByDniDesc() {
-        List<Estudiante> resultado = this.estudianteRepository.findAll();   //resultado de la query
-        List<EstudianteDTO> listaNueva = new ArrayList<>(); //lista vacia para poner los DTOs
-
-        for (Estudiante estudiante : resultado) {
-            EstudianteDTO estudianteDTO = new EstudianteDTO(estudiante.getNroDocumento(), estudiante.getNombre(),
-                    estudiante.getApellido(), estudiante.getEdad(), estudiante.getGenero(),
-                    estudiante.getCiudadResidencia(), estudiante.getNroLibreta());
-
-
-            listaNueva.add(estudianteDTO);
-        }
-
-        return listaNueva;  //retorna la lista de DTOs
+    public List<Estudiante> findAllEstudiantes() {
+        return estudianteRepository.findAll();
     }
 
 
     @Transactional(readOnly = true)
-    public EstudianteDTO findById(Long id) {
+    public Optional<Estudiante> findById(Long id) {
 
-        return this.estudianteRepository.findById(id).map(EstudianteDTO::new).orElse(null);
+        return this.estudianteRepository.findById(id);
 
 
     }
 
-    @Transactional
-    public EstudianteDTO save(Estudiante request) {
+//    @Transactional
+//    public EstudianteDTO save(Estudiante request) {
 //        final var estudiante = new Estudiante(request);
-        final var result = this.estudianteRepository.save(request);
-        return new EstudianteDTO(result.getNombre(), result.getApellido(), result.getGenero(), result.getCiudadResidencia(), result.getEdad(), result.getNroDocumento(), result.getNroLibreta());
+//        final var result = this.estudianteRepository.save(request);
+//        return new EstudianteDTO(result.getNombre(), result.getApellido(), result.getGenero(), result.getCiudadResidencia(), result.getEdad(), result.getNroDocumento(), result.getNroLibreta());
+//
+//    }
 
+    public Estudiante save(Estudiante estudiante) {
+        estudianteRepository.save(estudiante);
+        return estudiante;
     }
+
 
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findAllOrderByName() {
 
-        return this.estudianteRepository.findAllOrderByName().stream().map(EstudianteDTO::new).toList();
+        return this.estudianteRepository.findAllOrderByName();
 
     }
 
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findByGenero(String genero) {
 
-        return this.estudianteRepository.findByGenero(genero).stream().map(EstudianteDTO::new).toList();
+        return this.estudianteRepository.findByGenero(genero);
 
     }
 
@@ -68,25 +62,26 @@ public class EstudianteService {
     @Transactional(readOnly = true)
     public EstudianteDTO findByNroLibreta(int nroLibreta) {
 
-        return this.estudianteRepository.findByNroLibreta(nroLibreta).stream().map(EstudianteDTO::new).findFirst().orElse(null) ;
+        return this.estudianteRepository.findByNroLibreta(nroLibreta);
 
     }
     //findEstudiantesByCarreraAndCiudad
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String nombreCarrera, String ciudadResidencia) {
 
-        return this.estudianteRepository.findEstudiantesByCarreraAndCiudad(nombreCarrera,ciudadResidencia).stream().map(EstudianteDTO::new).toList();
+        return this.estudianteRepository.findEstudiantesByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
 
     }
+
 
     //b) matricular un estudiante en una carrera
-    @Transactional
-    public EstudianteDTO matEstudianteCarrera(EstudianteRequestDTO request) {
-        final var estudiante = new Estudiante(request);
-        final var result = this.estudianteRepository.save(estudiante);
-        return new EstudianteDTO(result);
-
-    }
+//    @Transactional
+//    public EstudianteDTO matEstudianteCarrera(EstudianteDTO request) {
+//        final var estudiante = new Estudiante(request);
+//        final var result = this.estudianteRepository.save(estudiante);
+//        return new EstudianteDTO(result);
+//
+//    }
 
 
 }

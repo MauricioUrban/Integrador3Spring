@@ -39,6 +39,9 @@ public class Estudiante_Carrera implements Serializable {
         this.graduado = graduado;
     }
 
+    public Estudiante_Carrera(int dni, int libretaUniversitaria, int carrera, int antiguedad, boolean equals, int anioIngreso) {
+    }
+
     //getters y setters
 
     public Estudiante getEstudiante() {

@@ -27,7 +27,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 
     //d) recuperar un estudiante, en base a su número de libreta universitaria.
     @Query("SELECT e FROM Estudiante e WHERE e.nroLibreta = :nroLibreta")
-    public List<EstudianteDTO> findByNroLibreta(int nroLibreta);
+    public EstudianteDTO findByNroLibreta(int nroLibreta);
 
     //g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia
 
@@ -42,6 +42,10 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 
     //Find by id
     @Query("SELECT e FROM Estudiante e WHERE e.idEstudiante = :id")
-    public List<Estudiante> findById(int id);
+    public Estudiante findById(int id);
+
+    @Query("SELECT e FROM Estudiante e")
+    List<EstudianteDTO> findAllEstudiantes();
+
 
 }

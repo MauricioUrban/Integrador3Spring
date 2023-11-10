@@ -2,36 +2,26 @@
 package tpintegrador3.Entidades;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import tpintegrador3.Service.DTO.Estudiante.Request.EstudianteRequestDTO;
-
-import java.io.Serializable;
+import lombok.Getter;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Data
-public class Estudiante implements Serializable {
-
+@Getter
+public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idEstudiante;
-    @Column(nullable=false)
     private String nombre;
-    @Column(nullable=false)
     private String apellido;
-    @Column
     private int edad;
-    @Column
     private String genero;
-    @Column(nullable=false)
     private int nroDocumento;
-    @Column(nullable=false)
     private String ciudadResidencia;
-    @Column(nullable=false)
     private int nroLibreta;
 
-    @OneToMany(mappedBy = "estudiante", fetch = FetchType.EAGER)
-    private List<Estudiante_Carrera> estudianteCarrera;
+    @OneToMany(mappedBy = "estudiante")
+    private List<Estudiante_Carrera> inscripciones;
 
     public Estudiante(String nombre, String apellido, int edad, String genero, int nroDocumento, String ciudadResidencia, int nroLibreta) {
         //this.idEstudiante = idEstudiante;
@@ -42,13 +32,62 @@ public class Estudiante implements Serializable {
         this.nroDocumento = nroDocumento;
         this.ciudadResidencia = ciudadResidencia;
         this.nroLibreta = nroLibreta;
-        //this.carreras = carreras;
+        this.inscripciones = new LinkedList<>();
     }
 
     public Estudiante() {
-
+        this.inscripciones = new LinkedList<>();
     }
 
-    public Estudiante(EstudianteRequestDTO request) {
+
+    public void addInscripcion(Estudiante_Carrera inscripcion){
+        if(!inscripciones.contains(inscripcion)){
+            inscripciones.add(inscripcion);
+        }
     }
+
+    public void setNroDocumento(int nroDocumento) {
+        this.nroDocumento = nroDocumento;
+    }
+
+    public void setCiudadResidencia(String ciudadResidencia) {
+        this.ciudadResidencia = ciudadResidencia;
+    }
+
+    public void setNroLibreta(int nroLibreta) {
+        this.nroLibreta = nroLibreta;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudadResidencia = ciudad;
+    }
+
+    public void setInscripciones(List<Estudiante_Carrera> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
+
+    @Override
+    public String toString() {
+        return nombre+", "+apellido+"\n";
+    }
+
+//    public void setEstudianteId(EstudianteId estudianteId) {
+//        this.estudianteId = estudianteId;
+//    }
 }
