@@ -9,7 +9,6 @@ import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +18,7 @@ public class EstudianteService {
     @Autowired
     private EstudianteRepository estudianteRepository;
 
-    public List<Estudiante> findAllEstudiantes() {
+    public List<Estudiante> findAll() {
         return estudianteRepository.findAll();
     }
 
@@ -32,13 +31,7 @@ public class EstudianteService {
 
     }
 
-//    @Transactional
-//    public EstudianteDTO save(Estudiante request) {
-//        final var estudiante = new Estudiante(request);
-//        final var result = this.estudianteRepository.save(request);
-//        return new EstudianteDTO(result.getNombre(), result.getApellido(), result.getGenero(), result.getCiudadResidencia(), result.getEdad(), result.getNroDocumento(), result.getNroLibreta());
-//
-//    }
+
 
     @Transactional
     public Estudiante save(Estudiante estudiante) {

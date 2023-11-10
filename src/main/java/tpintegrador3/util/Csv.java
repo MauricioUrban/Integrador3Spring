@@ -35,6 +35,7 @@ public class Csv {
     public void InsertarCSV(String csvEstudiante, String csvCarrera, String csvEstudianteCarrera) throws IOException {
 
         String path = "src/main/java/tpintegrador3/CSV";
+
         String csvFilePath = path + "/" + csvEstudiante;
         CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader(csvFilePath));
 
@@ -64,6 +65,7 @@ public class Csv {
         for (CSVRecord row : parser) {
 
 
+
             Estudiante e = this.er.findById(Long.parseLong(row.get("idEstudiante"))).get();
             Carrera c = this.cr.findById(Long.parseLong(row.get("idCarrera"))).get();
             Estudiante_Carrera ec = new Estudiante_Carrera
@@ -72,8 +74,10 @@ public class Csv {
             ecr.save(ec); //guarda a la matriculacion en la base de datos
 
 
+
+           
+
         }
     }
 }
-
 

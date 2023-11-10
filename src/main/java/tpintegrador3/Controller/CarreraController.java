@@ -51,11 +51,6 @@ public class CarreraController {
         return carreras;
     }
 
-    // Devuelve las carreras que tienen estudiantes inscriptos
-//    @GetMapping("/carrerasWithEstudiantes")
-//    public List<CarreraDTO> carrerasWithEstudiantes() {
-//        return carreraService.carrerasWithEstudiantes();
-//    }
 
     // Recibe un objeto CarreraRequestDTO, que contiene un criterio de búsqueda.
     @GetMapping("/search")
