@@ -4,8 +4,10 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Repository.EstudianteRepository;
+import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 
 import java.util.List;
@@ -38,10 +40,12 @@ public class EstudianteService {
 //
 //    }
 
+    @Transactional
     public Estudiante save(Estudiante estudiante) {
         estudianteRepository.save(estudiante);
         return estudiante;
     }
+
 
 
     @Transactional(readOnly = true)

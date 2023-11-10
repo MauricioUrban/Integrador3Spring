@@ -19,13 +19,13 @@ public class EstudianteController {
     private EstudianteService estudianteService;
 
 
-    @RequestMapping("/findAll")
+    @GetMapping("/findAll")
     public List<Estudiante> findAll() {
         List<Estudiante> estudiantes = estudianteService.findAllEstudiantes();
         return estudiantes;
     }
 
-    @RequestMapping("/findById/{id}")
+    @GetMapping("/findById/{id}")
     public Optional<Estudiante> findById(String id) {
         Long _id = Long.valueOf(id);
         Optional<Estudiante> estudiante = estudianteService.findById(_id);
