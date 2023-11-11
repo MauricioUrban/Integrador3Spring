@@ -69,11 +69,9 @@ public class Estudiante_CarreraService {
 
         for (Object[] data : reporteData) {
             String nombreCarrera = (String) data[0];
-            int antiguedad = (int) data[1];
             long cantidadEstudiantes = (long) data[2];
-            long cantidadGraduados = (long) data[3];
 
-            ReporteDTO reporteResponseDTO = new ReporteDTO(nombreCarrera, antiguedad, cantidadEstudiantes, cantidadGraduados);
+            ReporteDTO reporteResponseDTO = new ReporteDTO(nombreCarrera, cantidadEstudiantes);
             reporteResponseList.add(reporteResponseDTO);
         }
 
