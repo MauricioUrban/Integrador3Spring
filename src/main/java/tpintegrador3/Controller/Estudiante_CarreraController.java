@@ -10,6 +10,7 @@ import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
+import tpintegrador3.Service.DTO.Reporte.ReporteCompletoDTO;
 import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
 import tpintegrador3.Service.Estudiante_CarreraService;
 
@@ -39,7 +40,7 @@ public class Estudiante_CarreraController {
 
     //Devuelvo el reporte de carreras con inscriptos
     @GetMapping("/getCarrerasConInscriptos")
-    public List<ReporteDTO> getCarrerasConInscriptos() {
+    public List<ReporteCompletoDTO> getCarrerasConInscriptos() {
         return this.estudiante_carreraService.getCarrerasConInscriptos();
     }
 

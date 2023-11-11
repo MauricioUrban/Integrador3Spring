@@ -10,6 +10,7 @@ import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Estudiante_CarreraDTO;
+import tpintegrador3.Service.DTO.Reporte.ReporteCompletoDTO;
 import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
 
 import java.util.ArrayList;
@@ -67,14 +68,14 @@ public class Estudiante_CarreraService {
 
 
     // Genero el reporte de carreras con inscriptos y egresados por año
-    public List<ReporteDTO> getCarrerasConInscriptos() {
+    public List<ReporteCompletoDTO> getCarrerasConInscriptos() {
         List<Object[]> reporteData = estudianteCarreraRepository.getCarrerasConInscriptos(currentYear);
-        List<ReporteDTO> reporteResponseList = new ArrayList<>();
+        List<ReporteCompletoDTO> reporteResponseList = new ArrayList<>();
 
         for (Object[] data : reporteData) {
             String nombreCarrera = (String) data[0];
             long cantidadInscritos = (long) data[1];
-            ReporteDTO reporteResponseDTO = new ReporteDTO(nombreCarrera, cantidadInscritos);
+            ReporteCompletoDTO reporteResponseDTO = new ReporteCompletoDTO(nombreCarrera, cantidadInscritos);
             reporteResponseList.add(reporteResponseDTO);
         }
 

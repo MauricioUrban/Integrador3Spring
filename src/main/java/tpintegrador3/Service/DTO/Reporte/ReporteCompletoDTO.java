@@ -8,21 +8,16 @@ import lombok.Getter;
 @Getter
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ReporteDTO {
+public class ReporteCompletoDTO {
     @NotNull
     private String nombreCarrera;
-    private int antiguedad;
     @NotNull
     private long cantidadEstudiantes;
-    private long cantidadGraduados;
 
 
-    public ReporteDTO(String nombreCarrera, int antiguedad, long cantidadEstudiantes, long cantidadGraduados) {
+    public ReporteCompletoDTO(String nombreCarrera, long cantidadEstudiantes) {
         this.nombreCarrera = nombreCarrera;
-        this.antiguedad = antiguedad;
         this.cantidadEstudiantes = cantidadEstudiantes;
-        this.cantidadGraduados = cantidadGraduados;
     }
-
 
 }
