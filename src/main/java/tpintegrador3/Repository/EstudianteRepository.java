@@ -15,7 +15,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 
 //c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
 
-    @Query("SELECT e FROM Estudiante e ORDER BY e.nombre ASC")
+    @Query("SELECT NEW tpintegrador3.Service.DTO.Estudiante.EstudianteDTO(e.nombre, e.apellido, e.edad, e.genero, e.nroDocumento, e.ciudadResidencia, e.nroLibreta) FROM Estudiante e ORDER BY e.nombre ASC")
     public List<EstudianteDTO> findAllOrderByNombre();
 
     //b) matricular un estudiante en una carrera

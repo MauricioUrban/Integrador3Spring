@@ -70,10 +70,10 @@ public class EstudianteController {
         return estudianteService.findByNroLibreta(libreta);
     }
 
-    @RequestMapping(value="/genre/{genero}", method=RequestMethod.GET)
-    public List<EstudianteDTO> getByGenero(@PathVariable String genero){
-        return estudianteService.findByGenero(genero);
-    }
+//    @RequestMapping(value="/genre/{genero}", method=RequestMethod.GET)
+//    public List<EstudianteDTO> getByGenero(@PathVariable String genero){
+//        return estudianteService.findByGenero(genero);
+//    }
 
     @RequestMapping("/findEstudiantesByCarreraAndCiudad/{nombreCarrera}/{ciudadResidencia}")
     public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(@PathVariable String nombreCarrera, @PathVariable String ciudadResidencia) {
