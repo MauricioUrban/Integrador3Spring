@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 
+import java.util.List;
+import java.util.Optional;
+
 import java.util.Collection;
 import java.util.List;
 @Repository
@@ -16,7 +19,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 //c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
 
     @Query("SELECT e FROM Estudiante e ORDER BY e.nombre ASC")
-    public List<EstudianteDTO> findAllOrderByName();
+    public List<EstudianteDTO> findAllOrderByNombre();
 
     //b) matricular un estudiante en una carrera
 
@@ -26,8 +29,8 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
     public List<EstudianteDTO> findByGenero(String genero);
 
     //d) recuperar un estudiante, en base a su número de libreta universitaria.
-    @Query("SELECT e FROM Estudiante e WHERE e.nroLibreta = :nroLibreta")
-    public EstudianteDTO findByNroLibreta(int nroLibreta);
+    @Query("SELECT NEW tpintegrador3.Service.DTO.Estudiante.EstudianteDTO(e.nombre, e.apellido, e.edad, e.genero, e.nroDocumento, e.ciudadResidencia, e.nroLibreta) FROM Estudiante e WHERE e.nroLibreta = :nroLibreta")
+    EstudianteDTO findByNroLibreta(@Param("nroLibreta") int nroLibreta);
 
     //g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia
 

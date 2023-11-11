@@ -40,6 +40,8 @@ public class Carrera implements Serializable {
     }
 
     public Carrera(int id, String nombre) {
+        this.idCarrera = id;
+        this.nombreCarrera = nombre;
     }
 
     public void setNombre(String nombre) {
