@@ -1,5 +1,7 @@
 # Integrador 3 Spring Boot
 
+## Nombre de la Base de datos utilizada: integrador3 (mySQL)
+
 ### a) Dar de alta un estudiante
 - Método HTTP: POST
 - Endpoint: localhost:8083/estudiante/save
