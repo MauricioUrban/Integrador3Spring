@@ -34,12 +34,11 @@ public class Estudiante_CarreraController {
         estudiante_carreraService.reporteEstudiantesPorCarrera();
     }
 
-    //Save
-    @PostMapping("/save")
-    public ResponseEntity<String> save(@RequestParam Long idEstudiante,
-                                       @RequestParam Long idCarrera,
-                                       @RequestParam int year,
-                                       @RequestParam boolean graduado){
+    @PostMapping("/save/{idEstudiante}/{idCarrera}/{year}/{graduado}")
+    public ResponseEntity<String> save(@PathVariable Long idEstudiante,
+                                       @PathVariable Long idCarrera,
+                                       @PathVariable int year,
+                                       @PathVariable boolean graduado){
 
         Optional<Estudiante> estudianteOptional = estudianteRepository.findById(idEstudiante);
         Optional<Carrera> carreraOptional = carreraRepository.findById(idCarrera);
