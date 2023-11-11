@@ -25,11 +25,18 @@ public class EstudianteController {
     }
 
     @GetMapping("/findById/{id}")
-    public Optional<Estudiante> findById(String id) {
+    public EstudianteDTO findById(@PathVariable String id) {
         Long _id = Long.valueOf(id);
-        Optional<Estudiante> estudiante = estudianteService.findById(_id);
+        EstudianteDTO estudiante = estudianteService.findById(_id);
         return estudiante;
     }
+
+//    @GetMapping("/findByNroLibreta/{nroLibreta}")
+//    public EstudianteDTO findByNroLibreta(@PathVariable String nroLibreta) {
+//        Integer _nroLibreta = Integer.parseInt(nroLibreta);
+//        EstudianteDTO estudiante = estudianteService.findByNroLibreta(_nroLibreta);
+//        return estudiante;
+//    }
 
     @PostMapping("/save")
     public ResponseEntity<Estudiante> save(@RequestBody Estudiante request) {
@@ -38,18 +45,10 @@ public class EstudianteController {
     }
 
 
-    /*
-    @PostMapping("")
-    public ResponseEntity<ClienteResponseDTO> save( @RequestBody @Valid ClienteRequestDTO request ){
-        final var result = this.clienteService.save( request );
-        return ResponseEntity.accepted().body( result );
-    }
-*/
 
-
-    @GetMapping("/findAllOrderByName")
+    @GetMapping("/findAllOrderByNombre")
     public List<EstudianteDTO> findAllOrderByName() {
-        List<EstudianteDTO> estudiantes = estudianteService.findAllOrderByName();
+        List<EstudianteDTO> estudiantes = estudianteService.findAllOrderByNombre();
         return estudiantes;
     }
 
@@ -59,15 +58,15 @@ public class EstudianteController {
         return estudiantes;
     }
 
-//    @RequestMapping("/findByNroLibreta/{nroLibreta}")
-//    public EstudianteDTO findByNroLibreta(String nroLibreta) {
-//        int _nroLibreta = Integer.valueOf(nroLibreta);
-//        EstudianteDTO estudiante = estudianteService.findByNroLibreta(_nroLibreta);
-//        return estudiante;
+
+//
+//    @RequestMapping(value="/getByLibreta/{libreta}", method=RequestMethod.GET)
+//    public EstudianteDTO getByGenero(@PathVariable int libreta){
+//        return estudianteService.findByNroLibreta(libreta);
 //    }
 
-    @RequestMapping(value="/getByLibreta/{libreta}", method=RequestMethod.GET)
-    public EstudianteDTO getByGenero(@PathVariable int libreta){
+    @GetMapping(value="/findByNroLibreta/{libreta}")
+    public EstudianteDTO findByNroLibreta(@PathVariable int libreta){
         return estudianteService.findByNroLibreta(libreta);
     }
 

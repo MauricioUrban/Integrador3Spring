@@ -11,7 +11,7 @@ import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service("EstudianteService")
 //@RequiredArgsConstructor
@@ -47,14 +47,44 @@ public class EstudianteService {
     }
 
 
+//    @Transactional(readOnly = true)
+//    public Optional<Estudiante> findById(Long id) {
+//
+//        return this.estudianteRepository.findById(id);
+//
+//
+//    }
     @Transactional(readOnly = true)
-    public Optional<Estudiante> findById(Long id) {
+    public EstudianteDTO findById(Long id) {
+        return this.estudianteRepository.findById(id)
+                .map(estudiante -> new EstudianteDTO(
+                        estudiante.getNombre(),
+                        estudiante.getApellido(),
+                        estudiante.getEdad(),
+                        estudiante.getGenero(),
+                        estudiante.getNroDocumento(),
+                        estudiante.getCiudadResidencia(),
+                        estudiante.getNroLibreta()
 
-        return this.estudianteRepository.findById(id);
-
-
+                ))
+                .orElse(null);
     }
 
+//    @Transactional(readOnly = true)
+//    public EstudianteDTO findByNroLibreta(int nroLib) {
+//        return this.estudianteRepository.findByNroLibreta(nroLib)
+//                .map(estudiante -> new EstudianteDTO(
+//                        estudiante.getNombre(),
+//                        estudiante.getApellido(),
+//                        estudiante.getEdad(),
+//                        estudiante.getGenero(),
+//                        estudiante.getNroDocumento(),
+//                        estudiante.getCiudadResidencia(),
+//                        estudiante.getNroLibreta()
+//
+//                ))
+//                .orElse(null);
+//    }
 
 
     @Transactional
@@ -64,12 +94,29 @@ public class EstudianteService {
     }
 
 
+//    @Transactional(readOnly = true)
+//    public List<EstudianteDTO> findAllOrderByName() {
+//
+//        return this.estudianteRepository.findAllOrderByName();
+//
+//    }
 
-    @Transactional(readOnly = true)
-    public List<EstudianteDTO> findAllOrderByName() {
+    public List<EstudianteDTO> findAllOrderByNombre() {
+        List<EstudianteDTO> resultado = this.estudianteRepository.findAllOrderByNombre();   //resultado de la query
+        List<EstudianteDTO> listaNueva = new ArrayList<>(); //lista vacia para poner los DTOs
 
-        return this.estudianteRepository.findAllOrderByName();
+        for (EstudianteDTO estudiante : resultado) {
+            EstudianteDTO estudianteDTO = new EstudianteDTO(estudiante.getNombre(),
+                                                            estudiante.getApellido(),
+                                                            estudiante.getEdad(),
+                                                            estudiante.getGenero(),
+                                                            estudiante.getDni(),
+                                                            estudiante.getCiudadResidencia(),
+                                                            estudiante.getNumeroLibreta());
+            listaNueva.add(estudianteDTO);
+        }
 
+        return listaNueva;  //retorna la lista de DTOs
     }
 
     @Transactional(readOnly = true)
@@ -96,12 +143,11 @@ public class EstudianteService {
 
 
     //d) recuperar un estudiante, en base a su número de libreta universitaria.
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public EstudianteDTO findByNroLibreta(int nroLibreta) {
-
-        return this.estudianteRepository.findByNroLibreta(nroLibreta);
-
+        return estudianteRepository.findByNroLibreta(nroLibreta);
     }
+
     //findEstudiantesByCarreraAndCiudad
  //   @Transactional(readOnly = true)
  //   public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String nombreCarrera, String ciudadResidencia) {
@@ -130,19 +176,6 @@ public class EstudianteService {
 
         return estudiantesDTO;
     }
-
-
-
-
-
-    //b) matricular un estudiante en una carrera
-//    @Transactional
-//    public EstudianteDTO matEstudianteCarrera(EstudianteDTO request) {
-//        final var estudiante = new Estudiante(request);
-//        final var result = this.estudianteRepository.save(estudiante);
-//        return new EstudianteDTO(result);
-//
-//    }
 
 
 }

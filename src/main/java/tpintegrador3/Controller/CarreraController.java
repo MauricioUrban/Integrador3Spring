@@ -47,8 +47,7 @@ public class CarreraController {
     // Devuelve todas las carreras
     @GetMapping("/findAll")
     public List<CarreraDTO> findAll() {
-        List<CarreraDTO> carreras = carreraService.findAll();
-        return carreras;
+        return carreraService.findAll();
     }
 
 
