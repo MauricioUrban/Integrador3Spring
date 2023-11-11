@@ -79,7 +79,13 @@
       
 ![Captura de pantalla 2023-11-11 a la(s) 18 02 52](https://github.com/MauricioUrban/Integrador3Spring/assets/126684289/9d0052ef-03a1-42bc-bf70-198a0f1f0f8c)
 
+#
 
+### h) Generar un reporte de las carreras, que para cada carrera incluya información de los inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar los años de manera cronológica.
+- Método HTTP: GET
+- Endpoint: localhost:8083/estudiantes_carreras/reporteEstudiantesPorCarrera
+  
+![Captura de pantalla 2023-11-11 a la(s) 18 54 16](https://github.com/MauricioUrban/Integrador3Spring/assets/126684289/3a8ea957-3bee-4145-9e8e-96b89d11ae54)
 
 
 
