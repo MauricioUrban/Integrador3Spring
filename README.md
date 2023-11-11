@@ -2,7 +2,7 @@
 
 ### a) Dar de alta un estudiante
 - Método HTTP: POST
-- Endpoint: localhost:8083/estudiante/save
+- Endpoint: localhost:8083/estudiantes/save
 - Json de prueba: 
 {
     "nombre" : "Pepa",
@@ -20,7 +20,7 @@
 
 ### b) Matricular un estudiante en una carrera
 - Método HTTP: POST
-- Endpoint: localhost:8083/estudiante_carrera/save/{idEstudiante}/{idCarrera}/{añoInscripcion}/{graduado}
+- Endpoint: localhost:8083/estudiantes_carreras/save/{idEstudiante}/{idCarrera}/{añoInscripcion}/{graduado}
 - Observación:
   - datos usados de ejemplo:
     - {idEstudiante} : 1
@@ -33,7 +33,7 @@
 
 ### c) Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
 - Método HTTP: GET
-- Endpoint: localhost:8083/estudiante/findAllOrderByNombre
+- Endpoint: localhost:8083/estudiantes/findAllOrderByNombre
 - Observación: se listan los estudiantes ordenados alfabéticamente por nombre
 ![Captura de pantalla 2023-11-11 a la(s) 17 35 16](https://github.com/MauricioUrban/Integrador3Spring/assets/126684289/6769204d-3d67-4f5b-8522-adb9361cae05)
 
@@ -41,7 +41,7 @@
 
 ### d) Recuperar un estudiante, en base a su número de libreta universitaria.
 - Método HTTP: GET
-- Endpoint: localhost:8083/estudiante/findByNroLibreta/{nroLibreta}
+- Endpoint: localhost:8083/estudiantes/findByNroLibreta/{nroLibreta}
 - Observación:
   - datos usados de ejemplo:
     - {nroLibreta} : 80067  
@@ -51,7 +51,7 @@
 
 ### e) Recuperar todos los estudiantes, en base a su género.
 - Método HTTP: GET
-- Endpoint: localhost:8083/estudiante/findByGenero/{genero}
+- Endpoint: localhost:8083/estudiantes/findByGenero/{genero}
 - Observación:
   - datos usados de ejemplo:
     - {genero} : Male
@@ -79,9 +79,13 @@
       
 ![Captura de pantalla 2023-11-11 a la(s) 18 02 52](https://github.com/MauricioUrban/Integrador3Spring/assets/126684289/9d0052ef-03a1-42bc-bf70-198a0f1f0f8c)
 
+#
 
+### h) generar un reporte de las carreras, que para cada carrera incluya información de los inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar los años de manera cronológica.
+- Método HTTP: GET
+- Endpoint: localhost:8083/estudiantes_carreras/reporteEstudiantesPorCarrera
 
-
+![Captura de pantalla 2023-11-11 a la(s) 19.33.09.png](..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fhd%2Ffzw5hgnj10n48vhkbckgqc3c0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_sHQQWR%2FCaptura%20de%20pantalla%202023-11-11%20a%20la%28s%29%2019.33.09.png)
 
 
  
