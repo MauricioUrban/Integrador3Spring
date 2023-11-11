@@ -22,4 +22,17 @@ public interface Estudiante_CarreraRepository extends JpaRepository<Estudiante_C
             "GROUP BY c.nombreCarrera, ec.antiguedad " +
             "ORDER BY c.nombreCarrera ASC, ec.antiguedad ASC")
     List<Object[]> getReporte(@Param("currentYear") int currentYear);
+
+
+    @Query("SELECT c.nombreCarrera, " +
+            "COUNT(ec) AS cantidadInscritos " +
+            "FROM Estudiante_Carrera ec " +
+            "JOIN ec.carrera c " +
+            "WHERE ec.antiguedad BETWEEN 1990 AND :currentYear " +
+            "GROUP BY c.nombreCarrera " +
+            "ORDER BY cantidadInscritos DESC")
+    List<Object[]> getCarrerasConInscritos(@Param("currentYear") int currentYear);
+
+
 }
+

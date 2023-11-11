@@ -41,6 +41,12 @@ public class Estudiante_CarreraController {
         return this.estudiante_carreraService.reporteEstudiantesPorCarrera();
     }
 
+    @GetMapping("/getCarreraConInscriptos")
+    public List<ReporteDTO> getCarreraConInscriptos() {
+        return this.estudiante_carreraService.getCarrerasConInscriptos();
+    }
+
+
     @PostMapping("/save/{idEstudiante}/{idCarrera}/{year}/{graduado}")
     public ResponseEntity<String> save(@PathVariable Long idEstudiante,
                                        @PathVariable Long idCarrera,
