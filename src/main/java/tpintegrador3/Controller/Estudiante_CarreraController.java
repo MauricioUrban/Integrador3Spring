@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController("Estudiante_CarreraController")
-@RequestMapping("/estudiante_carrera")
+@RequestMapping("/estudiantes_carreras")
 public class Estudiante_CarreraController {
 
     @Autowired

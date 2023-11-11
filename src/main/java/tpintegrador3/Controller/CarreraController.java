@@ -9,7 +9,7 @@ import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 import java.util.List;
 
 @RestController("CarreraController")
-@RequestMapping("/carrera")
+@RequestMapping("/carreras")
 public class CarreraController {
 
     @Autowired
