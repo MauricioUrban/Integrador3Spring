@@ -85,7 +85,12 @@
 - Método HTTP: GET
 - Endpoint: localhost:8083/estudiantes_carreras/reporteEstudiantesPorCarrera
 
+<<<<<<< HEAD
 ![Captura de pantalla 2023-11-11 a la(s) 19.33.09.png](..%2F..%2F..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fhd%2Ffzw5hgnj10n48vhkbckgqc3c0000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_sHQQWR%2FCaptura%20de%20pantalla%202023-11-11%20a%20la%28s%29%2019.33.09.png)
+=======
+![Captura de pantalla 2023-11-11 a la(s) 19 28 33](https://github.com/MauricioUrban/Integrador3Spring/assets/126684289/f93cfbe3-b615-4213-bbab-dfcab8ebbfd3)
+
+>>>>>>> 88c7dd35ee842816ae8db24561199ffd6268137d
 
 
  
