@@ -42,7 +42,7 @@ public class Estudiante_CarreraController {
     }
 
     @GetMapping("/getCarreraConInscriptos")
-    public List<ReporteDTO> getCarreraConInscriptos() {
+    public List<ReporteDTO> getCarrerasConInscriptos() {
         return this.estudiante_carreraService.getCarrerasConInscriptos();
     }
 

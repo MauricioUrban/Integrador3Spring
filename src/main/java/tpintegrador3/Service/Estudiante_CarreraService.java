@@ -83,7 +83,7 @@ public class Estudiante_CarreraService {
 
 
     public List<ReporteDTO> getCarrerasConInscriptos() {
-        List<Object[]> reporteData = estudianteCarreraRepository.getCarrerasConInscritos(currentYear);
+        List<Object[]> reporteData = estudianteCarreraRepository.getCarrerasConInscriptos(currentYear);
         List<ReporteDTO> reporteResponseList = new ArrayList<>();
 
         for (Object[] data : reporteData) {

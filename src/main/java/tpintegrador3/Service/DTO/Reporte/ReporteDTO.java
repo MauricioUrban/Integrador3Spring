@@ -17,8 +17,8 @@ public class ReporteDTO {
         this.cantidadGraduados = cantidadGraduados;
     }
 
-    public ReporteDTO(String nombreCarrera, long cantidadInscritos) {
+    public ReporteDTO(String nombreCarrera, long cantidadEstudiantes) {
         this.nombreCarrera = nombreCarrera;
-        this.cantidadEstudiantes = cantidadInscritos;
+        this.cantidadEstudiantes = cantidadEstudiantes;
     }
 }

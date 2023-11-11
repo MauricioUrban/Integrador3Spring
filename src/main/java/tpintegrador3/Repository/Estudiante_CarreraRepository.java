@@ -31,7 +31,7 @@ public interface Estudiante_CarreraRepository extends JpaRepository<Estudiante_C
             "WHERE ec.antiguedad BETWEEN 1990 AND :currentYear " +
             "GROUP BY c.nombreCarrera " +
             "ORDER BY cantidadInscritos DESC")
-    List<Object[]> getCarrerasConInscritos(@Param("currentYear") int currentYear);
+    List<Object[]> getCarrerasConInscriptos(@Param("currentYear") int currentYear);
 
 
 }
