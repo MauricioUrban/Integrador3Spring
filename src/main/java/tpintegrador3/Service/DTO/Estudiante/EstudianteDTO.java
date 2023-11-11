@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
+@Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class EstudianteDTO implements Serializable {
 

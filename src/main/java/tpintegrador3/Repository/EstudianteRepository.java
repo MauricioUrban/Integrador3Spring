@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Service.DTO.Estudiante.EstudianteDTO;
 
-import java.util.Collection;
 import java.util.List;
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
@@ -23,7 +22,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
 
     //e) recuperar todos los estudiantes, en base a su género.
     @Query("SELECT e FROM Estudiante e WHERE e.genero = :genero")
-    public List<EstudianteDTO> findByGenero(String genero);
+    List<Estudiante> findByGenero(String genero);
 
     //d) recuperar un estudiante, en base a su número de libreta universitaria.
     @Query("SELECT e FROM Estudiante e WHERE e.nroLibreta = :nroLibreta")
@@ -38,7 +37,7 @@ public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
             "JOIN ec.carrera c " +
             "WHERE c.nombreCarrera = :nombreCarrera " +
             "AND e.ciudadResidencia = :ciudadResidencia")
-    List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(@Param("nombreCarrera") String nombreCarrera, @Param("ciudadResidencia") String ciudadResidencia);
+    List<Estudiante> findEstudiantesByCarreraAndCiudad(@Param("nombreCarrera") String nombreCarrera, @Param("ciudadResidencia") String ciudadResidencia);
 
     //Find by id
     @Query("SELECT e FROM Estudiante e WHERE e.idEstudiante = :id")

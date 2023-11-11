@@ -32,7 +32,13 @@ public class EstudianteService {
 
         for (Estudiante estudiante : resultado) {
             EstudianteDTO estudianteDTO = new EstudianteDTO(
-                    estudiante.getNombre()
+                    estudiante.getNombre(),
+                    estudiante.getApellido(),
+                    estudiante.getEdad(),
+                    estudiante.getGenero(),
+                    estudiante.getNroDocumento(),
+                    estudiante.getCiudadResidencia(),
+                    estudiante.getNroLibreta()
             );
             listaNueva.add(estudianteDTO);
         }
@@ -68,10 +74,26 @@ public class EstudianteService {
 
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findByGenero(String genero) {
+        List<Estudiante> estudiantes = this.estudianteRepository.findByGenero(genero);
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
 
-        return this.estudianteRepository.findByGenero(genero);
+        for (Estudiante estudiante : estudiantes) {
+            EstudianteDTO estudianteDTO = new EstudianteDTO(
+                    estudiante.getNombre(),
+                    estudiante.getApellido(),
+                    estudiante.getEdad(),
+                    estudiante.getGenero(),
+                    estudiante.getNroDocumento(),
+                    estudiante.getCiudadResidencia(),
+                    estudiante.getNroLibreta()
+            );
+            estudiantesDTO.add(estudianteDTO);
+        }
 
+        return estudiantesDTO;
     }
+
+
 
     //d) recuperar un estudiante, en base a su número de libreta universitaria.
     @Transactional(readOnly = true)
@@ -81,12 +103,36 @@ public class EstudianteService {
 
     }
     //findEstudiantesByCarreraAndCiudad
+ //   @Transactional(readOnly = true)
+ //   public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String nombreCarrera, String ciudadResidencia) {
+
+ //       return this.estudianteRepository.findEstudiantesByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
+
+  //  }
+
     @Transactional(readOnly = true)
     public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String nombreCarrera, String ciudadResidencia) {
+        List<Estudiante> estudiantes = this.estudianteRepository.findEstudiantesByCarreraAndCiudad(nombreCarrera, ciudadResidencia);
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
 
-        return this.estudianteRepository.findEstudiantesByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
+        for (Estudiante estudiante : estudiantes) {
+            EstudianteDTO estudianteDTO = new EstudianteDTO(
+                    estudiante.getNombre(),
+                    estudiante.getApellido(),
+                    estudiante.getEdad(),
+                    estudiante.getGenero(),
+                    estudiante.getNroDocumento(),
+                    estudiante.getCiudadResidencia(),
+                    estudiante.getNroLibreta()
+            );
+            estudiantesDTO.add(estudianteDTO);
+        }
 
+        return estudiantesDTO;
     }
+
+
+
 
 
     //b) matricular un estudiante en una carrera

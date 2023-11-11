@@ -47,14 +47,14 @@ public class EstudianteController {
 */
 
 
-    @RequestMapping("/findAllOrderByName")
+    @GetMapping("/findAllOrderByName")
     public List<EstudianteDTO> findAllOrderByName() {
         List<EstudianteDTO> estudiantes = estudianteService.findAllOrderByName();
         return estudiantes;
     }
 
-    @RequestMapping("/findByGenero/{genero}")
-    public List<EstudianteDTO> findByGenero(String genero) {
+    @GetMapping("/findByGenero/{genero}")
+    public List<EstudianteDTO> findByGenero(@PathVariable String genero) {
         List<EstudianteDTO> estudiantes = estudianteService.findByGenero(genero);
         return estudiantes;
     }
@@ -77,9 +77,10 @@ public class EstudianteController {
     }
 
     @RequestMapping("/findEstudiantesByCarreraAndCiudad/{nombreCarrera}/{ciudadResidencia}")
-    public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(String nombreCarrera, String ciudadResidencia) {
-        List<EstudianteDTO> estudiantes = estudianteService.findEstudiantesByCarreraAndCiudad(nombreCarrera,ciudadResidencia);
+    public List<EstudianteDTO> findEstudiantesByCarreraAndCiudad(@PathVariable String nombreCarrera, @PathVariable String ciudadResidencia) {
+        List<EstudianteDTO> estudiantes = estudianteService.findEstudiantesByCarreraAndCiudad(nombreCarrera, ciudadResidencia);
         return estudiantes;
     }
+
 
 }
