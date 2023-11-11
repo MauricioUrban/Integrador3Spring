@@ -40,6 +40,9 @@ public class Estudiante {
         this.inscripciones = new LinkedList<>();
     }
 
+    public String getNombre() {
+        return nombre;
+    }
 
     @Override
     public String toString() {
