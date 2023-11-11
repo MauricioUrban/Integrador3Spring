@@ -13,14 +13,11 @@ import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Repository.Estudiante_CarreraRepository;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
+
 
 @Component
 public class Csv {
-    private List<Estudiante> estudiantes = new LinkedList<>();
-    private List<Carrera> carreras = new LinkedList<>();
-    private List<Estudiante_Carrera> inscripciones = new LinkedList<>();
+
     private final EstudianteRepository er;
     private final CarreraRepository cr;
     private final Estudiante_CarreraRepository ecr;
@@ -32,6 +29,8 @@ public class Csv {
         this.ecr = ecr;
     }
 
+
+    // Metodo para insertar los datos de los csv en la base de datos
     public void InsertarCSV(String csvEstudiante, String csvCarrera, String csvEstudianteCarrera) throws IOException {
 
         String path = "src/main/java/tpintegrador3/CSV";
@@ -64,18 +63,12 @@ public class Csv {
 
         for (CSVRecord row : parser) {
 
-
-
             Estudiante e = this.er.findById(Long.parseLong(row.get("idEstudiante"))).get();
             Carrera c = this.cr.findById(Long.parseLong(row.get("idCarrera"))).get();
             Estudiante_Carrera ec = new Estudiante_Carrera
                     (e, c, Integer.parseInt(row.get("antiguedad")),
                             Boolean.parseBoolean(row.get("graduado")));
             ecr.save(ec); //guarda a la matriculacion en la base de datos
-
-
-
-           
 
         }
     }

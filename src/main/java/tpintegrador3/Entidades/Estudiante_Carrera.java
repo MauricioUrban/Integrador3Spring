@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.io.Serializable;
 
 @Entity
 @Data
+@Getter
+@Setter
+@Table(name = "estudiante_carrera")
 public class Estudiante_Carrera implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +26,10 @@ public class Estudiante_Carrera implements Serializable {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idCarrera", referencedColumnName = "idCarrera")
     private Carrera carrera;
-    
+
+    @Column
     private int antiguedad;
+    @Column
     private boolean graduado;
 
     public Estudiante_Carrera() {
@@ -38,44 +42,5 @@ public class Estudiante_Carrera implements Serializable {
         this.antiguedad = antiguedad;
         this.graduado = graduado;
     }
-
-    public Estudiante_Carrera(int dni, int libretaUniversitaria, int carrera, int antiguedad, boolean equals, int anioIngreso) {
-    }
-
-    //getters y setters
-
-    public Estudiante getEstudiante() {
-        return estudiante;
-    }
-
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
-    }
-
-    public Carrera getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(Carrera carrera) {
-        this.carrera = carrera;
-    }
-
-    public int getAntiguedad() {
-        return antiguedad;
-    }
-
-    public void setAntiguedad(int antiguedad) {
-        this.antiguedad = antiguedad;
-    }
-
-    public boolean isGraduado() {
-        return graduado;
-    }
-
-    public void setGraduado(boolean graduado) {
-        this.graduado = graduado;
-    }
-
-
 
 }

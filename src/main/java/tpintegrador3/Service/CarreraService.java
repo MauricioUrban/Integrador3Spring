@@ -15,6 +15,7 @@ public class CarreraService {
     @Autowired
     private CarreraRepository carreraRepository;
 
+    // Busca todas las carreras
     @Transactional(readOnly = true)
     public List<CarreraDTO> findAll() {
         List<Carrera> resultado = this.carreraRepository.findAll();
@@ -30,6 +31,7 @@ public class CarreraService {
         return listaNueva;
     }
 
+    // Busca una carrera por id
     @Transactional(readOnly = true)
     public CarreraDTO findById(Long id) {
         return this.carreraRepository.findById(id)
@@ -39,23 +41,8 @@ public class CarreraService {
                 .orElse(null);
     }
 
-    @Transactional(readOnly = true)
-    public List<CarreraDTO> search(CarreraDTO request) {
-        List<Carrera> resultado = this.carreraRepository.search(request.getNombreCarrera());
-        List<CarreraDTO> listaNueva = new ArrayList<>();
 
-        for (Carrera carrera : resultado) {
-            CarreraDTO carreraDTO = new CarreraDTO(
-                 carrera.getNombreCarrera()
-            );
-
-            listaNueva.add(carreraDTO);
-        }
-
-        return listaNueva;
-    }
-
-
+    // Guarda una carrera
     @Transactional
     public CarreraDTO save(Carrera carrera) {
             Carrera result = this.carreraRepository.save(carrera);
@@ -63,6 +50,7 @@ public class CarreraService {
     }
 
 
+    // Actualiza una carrera
     @Transactional
     public CarreraDTO update(Long id, CarreraDTO request) {
         Carrera carrera = carreraRepository.findById(id).orElse(null);
@@ -75,6 +63,7 @@ public class CarreraService {
     }
 
 
+    // Borra una carrera
     @Transactional
     public void delete(Long id) {
         Carrera carrera = carreraRepository.findById(id).orElse(null);

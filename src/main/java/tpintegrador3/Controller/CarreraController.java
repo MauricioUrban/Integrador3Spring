@@ -9,7 +9,7 @@ import tpintegrador3.Service.DTO.Carrera.CarreraDTO;
 import java.util.List;
 
 @RestController("CarreraController")
-@RequestMapping("/carrera")
+@RequestMapping("/carreras")
 public class CarreraController {
 
     @Autowired
@@ -50,12 +50,5 @@ public class CarreraController {
         return carreraService.findAll();
     }
 
-
-    // Recibe un objeto CarreraRequestDTO, que contiene un criterio de búsqueda.
-    @GetMapping("/search")
-    public List<CarreraDTO> search(CarreraDTO request) {
-
-        return carreraService.search(request);
-    }
 
 }

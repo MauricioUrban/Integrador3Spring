@@ -10,7 +10,6 @@ import tpintegrador3.Entidades.Estudiante;
 import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
-import tpintegrador3.Service.DTO.Estudiante_Carrera.Estudiante_CarreraDTO;
 import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
 import tpintegrador3.Service.Estudiante_CarreraService;
 
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController("Estudiante_CarreraController")
-@RequestMapping("/estudiante_carrera")
+@RequestMapping("/estudiantes_carreras")
 public class Estudiante_CarreraController {
 
     @Autowired
@@ -30,23 +29,21 @@ public class Estudiante_CarreraController {
     @Autowired
     private CarreraRepository carreraRepository;
 
-    //Devuelvo el reporte de estudiantes por carrera
- //   @GetMapping("/reporteEstudiantesPorCarrera")
-//    public void reporteEstudiantesPorCarrera() throws Exception {
- //       estudiante_carreraService.reporteEstudiantesPorCarrera();
-//    }
 
+
+    //Devuelvo el reporte de estudiantes por carrera
     @GetMapping("/reporteEstudiantesPorCarrera")
     public List<ReporteDTO> reporteEstudiantesPorCarrera() {
         return this.estudiante_carreraService.reporteEstudiantesPorCarrera();
     }
 
+    //Devuelvo el reporte de carreras con inscriptos
     @GetMapping("/getCarrerasConInscriptos")
     public List<ReporteDTO> getCarrerasConInscriptos() {
         return this.estudiante_carreraService.getCarrerasConInscriptos();
     }
 
-
+    //Devuelvo el reporte de estudiantes por carrera
     @PostMapping("/save/{idEstudiante}/{idCarrera}/{year}/{graduado}")
     public ResponseEntity<String> save(@PathVariable Long idEstudiante,
                                        @PathVariable Long idCarrera,
@@ -73,10 +70,6 @@ public class Estudiante_CarreraController {
         }
     }
 
-    //findById
-    @GetMapping("/findById/{id}")
-    public Estudiante_CarreraDTO findById(@PathVariable Long id) {
-        return estudiante_carreraService.findById(id);
-    }
+
 
 }

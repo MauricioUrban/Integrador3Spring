@@ -16,11 +16,17 @@ public class EstudianteDTO implements Serializable {
     @NotNull(message = "El nombre es un campo obligatorio.")
     @NotEmpty(message = "El nombre es un campo obligatorio.")
     private String nombre;
+    @NotNull(message = "El apellido es un campo obligatorio.")
     private String apellido;
+    @NotNull(message = "La edad es un campo obligatorio.")
     private int edad;
+    @NotNull(message = "El genero es un campo obligatorio.")
     private String genero;
+    @NotNull(message = "El numero de documento es un campo obligatorio.")
     private int nroDocumento;
+    @NotNull(message = "La ciudad de residencia es un campo obligatorio.")
     private String ciudadResidencia;
+    @NotNull(message = "El numero de libreta es un campo obligatorio.")
     private int nroLibreta;
 
 
@@ -37,12 +43,9 @@ public class EstudianteDTO implements Serializable {
     }
 
     @JsonCreator
-    public EstudianteDTO() {
-        // Constructor sin argumentos requerido por Json
-    }
+    public EstudianteDTO() {    }
 
-    public EstudianteDTO(String nombre) {
-    }
+
 
     @Override
     public String toString() {
