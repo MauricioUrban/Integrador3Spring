@@ -2,6 +2,7 @@ package tpintegrador3.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import tpintegrador3.Entidades.Estudiante_Carrera;
 
@@ -20,5 +21,5 @@ public interface Estudiante_CarreraRepository extends JpaRepository<Estudiante_C
             "WHERE ec.antiguedad BETWEEN 1990 AND :currentYear " +
             "GROUP BY c.nombreCarrera, ec.antiguedad " +
             "ORDER BY c.nombreCarrera ASC, ec.antiguedad ASC")
-    List<Object[]> getReporte();
+    List<Object[]> getReporte(@Param("currentYear") int currentYear);
 }

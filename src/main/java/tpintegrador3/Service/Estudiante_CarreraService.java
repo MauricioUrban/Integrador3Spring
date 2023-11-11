@@ -1,6 +1,7 @@
 package tpintegrador3.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import tpintegrador3.Entidades.Carrera;
 import tpintegrador3.Entidades.Estudiante;
@@ -24,6 +25,14 @@ public class Estudiante_CarreraService {
     private EstudianteRepository estudianteRepository;
     @Autowired
     private CarreraRepository carreraRepository;
+
+
+
+    @Value("${tuapp.currentYear}")
+    private int currentYear;
+
+
+
     public Estudiante_CarreraDTO save(Estudiante_Carrera ec) throws Exception {
         //carrera obtenida por id
         Carrera c = carreraRepository.findById(ec.getCarrera().getIdCarrera()).orElseThrow(() -> new Exception("Carrera no encontrada"));
@@ -55,7 +64,7 @@ public class Estudiante_CarreraService {
 
 
     public List<ReporteDTO> reporteEstudiantesPorCarrera() {
-        List<Object[]> reporteData = estudianteCarreraRepository.getReporte();
+        List<Object[]> reporteData = estudianteCarreraRepository.getReporte(currentYear);
         List<ReporteDTO> reporteResponseList = new ArrayList<>();
 
         for (Object[] data : reporteData) {

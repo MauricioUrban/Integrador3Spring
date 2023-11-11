@@ -11,8 +11,10 @@ import tpintegrador3.Entidades.Estudiante_Carrera;
 import tpintegrador3.Repository.CarreraRepository;
 import tpintegrador3.Repository.EstudianteRepository;
 import tpintegrador3.Service.DTO.Estudiante_Carrera.Estudiante_CarreraDTO;
+import tpintegrador3.Service.DTO.Reporte.ReporteDTO;
 import tpintegrador3.Service.Estudiante_CarreraService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController("Estudiante_CarreraController")
@@ -29,9 +31,14 @@ public class Estudiante_CarreraController {
     private CarreraRepository carreraRepository;
 
     //Devuelvo el reporte de estudiantes por carrera
+ //   @GetMapping("/reporteEstudiantesPorCarrera")
+//    public void reporteEstudiantesPorCarrera() throws Exception {
+ //       estudiante_carreraService.reporteEstudiantesPorCarrera();
+//    }
+
     @GetMapping("/reporteEstudiantesPorCarrera")
-    public void reporteEstudiantesPorCarrera() throws Exception {
-        estudiante_carreraService.reporteEstudiantesPorCarrera();
+    public List<ReporteDTO> reporteEstudiantesPorCarrera() {
+        return this.estudiante_carreraService.reporteEstudiantesPorCarrera();
     }
 
     @PostMapping("/save/{idEstudiante}/{idCarrera}/{year}/{graduado}")
